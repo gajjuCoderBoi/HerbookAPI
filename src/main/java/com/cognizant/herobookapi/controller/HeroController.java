@@ -3,12 +3,9 @@ package com.cognizant.herobookapi.controller;
 import com.cognizant.herobookapi.HeroService;
 import com.cognizant.herobookapi.entity.Hero;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,9 +16,8 @@ public class HeroController {
     private HeroService heroService;
 
     @GetMapping("list")
-    public List<Hero> getAllHeros(){
-
-        return heroService.getAllHeros();
+    public ResponseEntity<List<Hero>> getAllHeros(@RequestParam String visitortag){
+        return heroService.getAllHeros(visitortag);
     }
 
 }
