@@ -19,5 +19,7 @@ public class Hero {
     @Column(name = "hero_name")
     private String name;
 
-
+    public Hero(String name) {
+        this.name = name;
+    }
 }

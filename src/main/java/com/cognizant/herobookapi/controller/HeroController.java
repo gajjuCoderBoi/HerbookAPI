@@ -16,8 +16,8 @@ public class HeroController {
     @GetMapping("list")
     public List<Hero> getAllHeros(){
         List<Hero> list = new ArrayList<>();
-        list.add(new Hero());
-        list.add(new Hero());
+        list.add(new Hero("Superman"));
+        list.add(new Hero("Batman"));
         return list;
     }
 
