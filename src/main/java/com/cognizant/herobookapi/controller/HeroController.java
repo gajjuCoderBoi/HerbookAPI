@@ -1,6 +1,8 @@
 package com.cognizant.herobookapi.controller;
 
+import com.cognizant.herobookapi.HeroService;
 import com.cognizant.herobookapi.entity.Hero;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +15,13 @@ import java.util.List;
 @RequestMapping("/hero")
 public class HeroController {
 
+    @Autowired
+    private HeroService heroService;
+
     @GetMapping("list")
     public List<Hero> getAllHeros(){
-        List<Hero> list = new ArrayList<>();
-        list.add(new Hero("Superman"));
-        list.add(new Hero("Batman"));
-        return list;
+
+        return heroService.getAllHeros();
     }
 
 }

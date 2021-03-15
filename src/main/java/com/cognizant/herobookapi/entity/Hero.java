@@ -1,10 +1,10 @@
 package com.cognizant.herobookapi.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -14,7 +14,7 @@ public class Hero {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "hero_id")
-    private Long id;
+    private UUID id;
 
     @Column(name = "hero_name")
     private String name;
