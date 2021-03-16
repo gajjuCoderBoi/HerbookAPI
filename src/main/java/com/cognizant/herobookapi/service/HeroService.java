@@ -1,4 +1,4 @@
-package com.cognizant.herobookapi;
+package com.cognizant.herobookapi.service;
 
 import com.cognizant.herobookapi.entity.Hero;
 import com.cognizant.herobookapi.repository.HeroRepository;
