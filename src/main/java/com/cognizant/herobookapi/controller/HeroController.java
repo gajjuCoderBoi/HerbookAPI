@@ -1,6 +1,6 @@
 package com.cognizant.herobookapi.controller;
 
-import com.cognizant.herobookapi.HeroService;
+import com.cognizant.herobookapi.service.HeroService;
 import com.cognizant.herobookapi.entity.Hero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ public class HeroController {
     @Autowired
     private HeroService heroService;
 
-    @GetMapping("list")
+    @GetMapping("/list")
     public ResponseEntity<List<Hero>> getAllHeros(@RequestParam String visitortag){
         return heroService.getAllHeros(visitortag);
     }
