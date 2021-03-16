@@ -30,8 +30,8 @@ public class HeroControllerTest {
 
         mockMvc.perform(rq)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("Superman"))
-                .andExpect(jsonPath("$[1].name").value("Batman"))
+                .andExpect(jsonPath("$[0].heroName").value("Superman"))
+                .andExpect(jsonPath("$[1].heroName").value("Batman"))
                 .andDo(print())
         ;
 
