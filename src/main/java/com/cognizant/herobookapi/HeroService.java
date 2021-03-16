@@ -2,6 +2,7 @@ package com.cognizant.herobookapi;
 
 import com.cognizant.herobookapi.entity.Hero;
 import com.cognizant.herobookapi.repository.HeroRepository;
+import com.cognizant.herobookapi.response.CustomMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,10 +36,16 @@ public class HeroService {
         return tag.equals("galvanize");
     }
 
-    public ResponseEntity<Hero> getHeroByName(String visitortag, String heroName) {
+    public ResponseEntity<?> getHeroByName(String visitortag, String heroName) {
 
         if(isAuthorized(visitortag)){
             Hero savedHero = heroRepository.findByHeroName(heroName);
+
+            if(savedHero == null){
+                CustomMessage message = new CustomMessage();
+                message.setMessage(heroName+" does not exists");
+                return new ResponseEntity<CustomMessage>(message, HttpStatus.NOT_FOUND);
+            }
             return new ResponseEntity<Hero>(savedHero, HttpStatus.OK);
         }
         else

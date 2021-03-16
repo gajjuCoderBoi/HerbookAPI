@@ -81,5 +81,20 @@ public class HeroControllerTest {
         ;
     }
 
+    @Test
+    public void getHeroByHeroName_DoesNotExistsTest() throws Exception{
+
+        RequestBuilder req = get("/hero")
+                .queryParam("visitortag","galvanize")
+                .queryParam("heroName","CommonMan")
+                .accept(MediaType.APPLICATION_JSON);
+
+        mockMvc.perform(req)
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("message").value("CommonMan does not exists"))
+                .andDo(print())
+        ;
+    }
+
 
 }

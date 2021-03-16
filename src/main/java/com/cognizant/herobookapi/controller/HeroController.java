@@ -21,7 +21,7 @@ public class HeroController {
     }
 
     @GetMapping
-    public ResponseEntity<Hero> getHeroByName(@RequestParam String visitortag, @RequestParam String heroName){
+    public ResponseEntity<?> getHeroByName(@RequestParam String visitortag, @RequestParam String heroName){
 
         return heroService.getHeroByName(visitortag,heroName);
 
