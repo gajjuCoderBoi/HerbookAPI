@@ -8,4 +8,6 @@ import java.util.UUID;
 
 @Repository
 public interface HeroRepository extends JpaRepository<Hero, UUID> {
+
+    public Hero findByHeroName(String name);
 }

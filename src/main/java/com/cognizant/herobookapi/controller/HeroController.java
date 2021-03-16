@@ -20,10 +20,10 @@ public class HeroController {
         return heroService.getAllHeros(visitortag);
     }
 
-    @GetMapping("")
-    public String getHeroByName(@RequestParam String visitortag, @RequestParam String heroName){
+    @GetMapping
+    public ResponseEntity<Hero> getHeroByName(@RequestParam String visitortag, @RequestParam String heroName){
 
-        return "{\"realName\":\"Henry Cavill\"}";
+        return heroService.getHeroByName(visitortag,heroName);
 
     }
 

@@ -17,9 +17,13 @@ public class Hero {
     private UUID id;
 
     @Column(name = "hero_name")
-    private String name;
+    private String heroName;
 
-    public Hero(String name) {
-        this.name = name;
+    @Column(name = "real_name")
+    private String realName;
+
+    public Hero(String heroName, String realName) {
+        this.heroName = heroName;
+        this.realName = realName;
     }
 }

@@ -19,8 +19,8 @@ public class HeroService {
 
     @PostConstruct
     void seedingDb(){
-        heroRepository.save(new Hero("Superman"));
-        heroRepository.save(new Hero("Batman"));
+        heroRepository.save(new Hero("Superman","Henry Cavill"));
+        heroRepository.save(new Hero("Batman","Ben Affleck"));
     }
 
     public ResponseEntity<List<Hero>> getAllHeros(String visitortag) {
@@ -29,5 +29,20 @@ public class HeroService {
                 new ResponseEntity<List<Hero>>(heroRepository.findAll(), HttpStatus.OK)
                 :
                 new ResponseEntity<List<Hero>>(Collections.EMPTY_LIST, HttpStatus.UNAUTHORIZED);
+    }
+
+    private boolean isAuthorized(String tag){
+        return tag.equals("galvanize");
+    }
+
+    public ResponseEntity<Hero> getHeroByName(String visitortag, String heroName) {
+
+        if(isAuthorized(visitortag)){
+            Hero savedHero = heroRepository.findByHeroName(heroName);
+            return new ResponseEntity<Hero>(savedHero, HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<Hero>(new Hero(), HttpStatus.UNAUTHORIZED);
+
     }
 }
