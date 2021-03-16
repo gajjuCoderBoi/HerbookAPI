@@ -52,5 +52,21 @@ public class HeroControllerTest {
 
     }
 
+    @Test
+    public void getHeroByHeroName_SuccessTest() throws Exception{
+
+        RequestBuilder req = get("/hero")
+                .queryParam("visitortag","galvanize")
+                .queryParam("heroName","Superman")
+                .accept(MediaType.APPLICATION_JSON);
+
+        mockMvc.perform(req)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("realName").value("Henry Cavill"))
+                .andDo(print())
+                ;
+
+    }
+
 
 }
