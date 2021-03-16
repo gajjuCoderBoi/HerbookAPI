@@ -68,5 +68,18 @@ public class HeroControllerTest {
 
     }
 
+    @Test
+    public void getHeroByHeroName_UnautorizedTest() throws Exception{
+        RequestBuilder req = get("/hero")
+                .queryParam("visitortag","xyz")
+                .queryParam("heroName","Superman")
+                .accept(MediaType.APPLICATION_JSON);
+
+        mockMvc.perform(req)
+                .andExpect(status().isUnauthorized())
+                .andDo(print())
+        ;
+    }
+
 
 }
