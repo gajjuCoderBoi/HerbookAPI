@@ -30,6 +30,8 @@ public class VillainControllerTest {
         mockMvc.perform(rq)
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].villainName").value("Thanos"))
+                .andExpect(jsonPath("$[1].villainName").value("Joker"))
                 .andDo(print());
     }
 
