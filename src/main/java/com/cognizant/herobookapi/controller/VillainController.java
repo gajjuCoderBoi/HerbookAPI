@@ -2,6 +2,7 @@ package com.cognizant.herobookapi.controller;
 
 import com.cognizant.herobookapi.dto.VillainDto;
 import com.cognizant.herobookapi.service.VillainService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import java.util.List;
 public class VillainController {
 
 
+    @Autowired
     private VillainService villainService;
 
     @GetMapping

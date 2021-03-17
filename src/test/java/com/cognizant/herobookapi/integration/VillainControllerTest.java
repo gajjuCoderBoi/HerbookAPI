@@ -29,7 +29,7 @@ public class VillainControllerTest {
 
         mockMvc.perform(rq)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(0)))
+                .andExpect(jsonPath("$", hasSize(2)))
                 .andDo(print());
     }
 
