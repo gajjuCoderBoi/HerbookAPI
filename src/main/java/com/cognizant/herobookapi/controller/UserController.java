@@ -19,7 +19,8 @@ public class UserController {
     //("/users/favourite")
 
     @PostMapping("/favourite")
-    public ResponseEntity<List<Favourite>> getFavourites(@RequestParam String username){
-        return favouriteService.getUserFavourites(username);
+    public ResponseEntity<Favourite> createFavourite(@RequestParam String username,
+                                                         @RequestParam String favouriteName){
+        return favouriteService.createUserFavourites(username, favouriteName);
     }
 }

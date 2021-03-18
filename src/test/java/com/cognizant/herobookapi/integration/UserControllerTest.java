@@ -28,10 +28,12 @@ public class UserControllerTest {
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .queryParam("username", "iqbal")
+                .queryParam("favouriteName", "marvels")
                 ;
         mockMvc.perform(req)
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$",hasSize(0)))
+                //.andExpect(jsonPath("$",hasSize(0)))
+                .andExpect(jsonPath("id").isNotEmpty())
                 .andDo(print())
                 ;
 
