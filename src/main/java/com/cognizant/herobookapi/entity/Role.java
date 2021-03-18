@@ -1,9 +1,14 @@
 package com.cognizant.herobookapi.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
+@NoArgsConstructor
+@Data
 @Table(name = "roles")
 public class Role {
     @Id
@@ -13,5 +18,9 @@ public class Role {
 
     @Column(name = "role_name")
     private String name;
+
+    public Role(String name){
+        this.name = name;
+    }
 
 }
