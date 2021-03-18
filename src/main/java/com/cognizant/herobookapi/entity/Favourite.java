@@ -21,10 +21,15 @@ public class Favourite {
     private String favouriteName;
 
     @ManyToMany
-    @JoinTable(name = "user_favourites",
+    @JoinTable(name = "favourites_hero",
             joinColumns = {@JoinColumn(name = "favourite_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+            inverseJoinColumns = {@JoinColumn(name = "hero_id")})
     private List<Hero> favouriteHeroList;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private User user;
+
 
 
 }

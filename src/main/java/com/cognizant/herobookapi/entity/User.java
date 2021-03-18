@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -22,6 +23,9 @@ public class User {
     @OneToOne
     @JoinColumn(referencedColumnName = "role_id", name = "role_id")
     private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Favourite> favouriteList;
 
     public User(String name, Role role){
         this.username = name;
