@@ -20,7 +20,7 @@ public class User {
     private String username;
 
     @OneToOne
-    @PrimaryKeyJoinColumn
+    @JoinColumn(referencedColumnName = "role_id", name = "role_id")
     private Role role;
 
     public User(String name, Role role){
